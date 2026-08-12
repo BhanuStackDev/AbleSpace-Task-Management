@@ -1,6 +1,9 @@
 "use client";
 
 import { useTheme } from "@/components/theme/ThemeProvider";
+import { useRouter } from "next/navigation";
+import { endGuestSession } from "@/lib/guest-auth";
+import { useState } from "react";
 
 type HeaderProps = {
   searchQuery: string;
@@ -11,7 +14,15 @@ export default function Header({
   searchQuery,
   onSearchChange,
 }: HeaderProps) {
+  const router = useRouter();
   const { theme, toggleTheme } = useTheme();
+  const [profileOpen, setProfileOpen] = useState(false);
+
+  function handleLogout() {
+    endGuestSession();
+    setProfileOpen(false);
+    router.replace("/login");
+  }
 
   return (
     <header className="flex h-16 items-center justify-between border-b border-slate-200 bg-white px-4 dark:border-slate-700 dark:bg-slate-900 sm:px-6">
@@ -77,22 +88,47 @@ export default function Header({
           <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-red-500" />
         </button>
 
-        <button
-          type="button"
-          className="flex items-center gap-2 rounded-lg border border-slate-200 px-2 py-1.5 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800 sm:px-3"
-        >
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900 text-xs font-semibold text-white dark:bg-white dark:text-slate-900">
-            G
-          </span>
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => setProfileOpen((open) => !open)}
+            className="flex items-center gap-2 rounded-lg border border-slate-200 px-2 py-1.5 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800 sm:px-3"
+            aria-haspopup="menu"
+            aria-expanded={profileOpen}
+          >
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900 text-xs font-semibold text-white dark:bg-white dark:text-slate-900">
+              G
+            </span>
 
-          <span className="hidden text-sm font-medium text-slate-700 dark:text-slate-200 md:block">
-            Guest
-          </span>
+            <span className="hidden text-sm font-medium text-slate-700 dark:text-slate-200 md:block">
+              Guest
+            </span>
 
-          <span className="hidden text-xs text-slate-400 md:block">
-            ⌄
-          </span>
-        </button>
+            <span className="hidden text-xs text-slate-400 md:block">
+              {profileOpen ? "⌃" : "⌄"}
+            </span>
+          </button>
+
+          {profileOpen && (
+            <div
+              className="absolute right-0 top-12 z-50 w-48 rounded-xl border border-slate-200 bg-white p-2 shadow-lg dark:border-slate-700 dark:bg-slate-900"
+              role="menu"
+            >
+              <div className="border-b border-slate-100 px-3 py-2 dark:border-slate-800">
+                <p className="text-sm font-semibold text-slate-900 dark:text-white">Guest</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Demo session</p>
+              </div>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="mt-1 flex w-full items-center rounded-lg px-3 py-2 text-left text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
+                role="menuitem"
+              >
+                Log out
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

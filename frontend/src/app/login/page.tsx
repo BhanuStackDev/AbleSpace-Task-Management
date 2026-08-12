@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { startGuestSession } from "@/lib/guest-auth";
+import { isGuestSessionActive, startGuestSession } from "@/lib/guest-auth";
 import { useTheme } from "@/components/theme/ThemeProvider";
 
 export default function LoginPage() {
@@ -11,7 +11,10 @@ export default function LoginPage() {
 
   useEffect(() => {
     document.title = "Sign in · AbleSpace";
-  }, []);
+    if (isGuestSessionActive()) {
+      router.replace("/");
+    }
+  }, [router]);
 
   function handleGuestLogin() {
     startGuestSession();
