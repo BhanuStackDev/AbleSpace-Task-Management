@@ -201,12 +201,20 @@ UX/UI observations
 
 Suggested functionality improvements
 
-Author
+## Live Demo
+
+### Frontend
+https://able-space-task-management.vercel.app/login
+
+### Backend API
+https://ablespace-backend-8vnt.onrender.com
+
+## GitHub Repository
+
+https://github.com/BhanuStackDev/AbleSpace-Task-Management
+
+## Author
 
 Bhanuday Urmaliya
 
 Full Stack Developer
-
-GitHub Repository
-
-https://github.com/BhanuStackDev/AbleSpace-Task-Management
