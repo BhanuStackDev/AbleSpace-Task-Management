@@ -1,217 +1,133 @@
-AbleSpace – Task Management System
+# AbleSpace - Task Management System
 
-A responsive task management application built as a Full Stack Developer technical assessment.
-
-Overview
-
-AbleSpace provides a clean task management experience where users can create, view, edit, delete, search, and manage tasks. The application supports task status, priority, due dates, theme switching, guest access, and persistent task data.
-
-Features
-
-Authentication
-
-Guest Login
-
-Protected application flow
-
-Guest session persistence
-
-Back to Login option
-
-Task Management
-
-Create tasks
-
-View task details
-
-Edit tasks
-
-Delete tasks
-
-Change task status
-
-Change task priority
-
-Set task due dates
-
-Due-date calendar
-
-Search tasks
-
-Dashboard
-
-Total Tasks
-
-To Do
-
-In Progress
-
-Completed
-
-Responsive task cards
-
-Theme
-
-Light/Dark theme
-
-Theme preference persists across refreshes
-
-Backend & Persistence
-
-NestJS REST API
-
-SQLite database
-
-TypeORM
-
-Frontend API integration
-
-Local persistence fallback
-
-Responsive Design
-
-Desktop
-
-Tablet
-
-Mobile
-
-Tech Stack
-
-Frontend
-
-Next.js
-
-React
-
-TypeScript
-
-Tailwind CSS
-
-Backend
-
-NestJS
-
-TypeScript
-
-TypeORM
-
-SQLite
-
-Project Structure
-
-AbleSpace-Assessment/
-├── frontend/
-├── backend/
-└── README.md
-
-Getting Started
-
-Prerequisites
-
-Node.js
-
-npm
-
-Frontend
-
-cd frontend
-npm install
-npm run dev
-
-Frontend:
-
-http://localhost:3000
-
-Backend
-
-Open another terminal:
-
-cd backend
-npm install
-npm run start:dev
-
-API Endpoints
-
-Method
-
-Endpoint
-
-Description
-
-GET
-
-/api/tasks
-
-Get all tasks
-
-POST
-
-/api/tasks
-
-Create a task
-
-PATCH
-
-/api/tasks/:id
-
-Update a task
-
-DELETE
-
-/api/tasks/:id
-
-Delete a task
-
-Guest Flow
-
-Login
-  ↓
-Continue as Guest
-  ↓
-Task Dashboard
-  ↓
-Manage Tasks
-  ↓
-Back to Login
-
-Protected pages require an active guest session.
-
-Theme Persistence
-
-The selected Light/Dark theme is stored locally and remains selected after page refresh.
-
-Data Persistence
-
-Tasks are persisted through the NestJS API and SQLite database. The frontend also maintains local persistence as a fallback when the API is unavailable.
-
-Design & Responsiveness
-
-The interface follows the provided assessment design while supporting desktop, tablet, and mobile layouts.
-
-Part 2 – Product Understanding
-
-Part 2 is provided separately as a screenshot-based document covering:
-
-AbleSpace Take Data workflow
-
-Workflow explanation
-
-UX/UI observations
-
-Suggested functionality improvements
+A responsive full-stack task management application built for the AbleSpace Full Stack Developer technical assessment.
 
 ## Live Demo
 
+- Frontend: https://able-space-task-management.vercel.app/login
+- Backend API: https://ablespace-backend-8vnt.onrender.com
+- GitHub: https://github.com/BhanuStackDev/AbleSpace-Task-Management
+
+## Tech Stack
+
+- Frontend: Next.js 16, App Router, React, TypeScript, Tailwind CSS
+- Backend: NestJS, TypeScript
+- Database: SQLite with TypeORM
+- Validation: class-validator and class-transformer
+- Deployment: Vercel (frontend) and Render (backend)
+
+## Part 1 - Task Management System
+
+### Implemented features
+
+- Guest login and protected application flow
+- Figma-inspired task workspace layout
+- Tasks grouped into To Do, Doing and Completed sections
+- Create, view, edit and delete tasks
+- Task status and priority management
+- Due dates and calendar view
+- Search across task titles and descriptions
+- Light and dark theme support with refresh persistence
+- Responsive desktop, tablet and mobile layouts
+- Reusable task, layout and modal components
+- NestJS REST API with validation
+- SQLite persistence through TypeORM
+- Local storage fallback when the API is temporarily unavailable
+
+### API endpoints
+
+| Method | Endpoint | Description |
+| --- | --- | --- |
+| GET | `/api/tasks` | Get all tasks |
+| POST | `/api/tasks` | Create a task |
+| PATCH | `/api/tasks/:id` | Update a task |
+| DELETE | `/api/tasks/:id` | Delete a task |
+
+## Project structure
+
+```text
+AbleSpace-Assessment/
+├── frontend/
+│   ├── src/app/
+│   ├── src/components/
+│   ├── src/lib/
+│   └── src/types/
+├── backend/
+│   └── src/
+├── README.md
+└── package.json
+```
+
+## Run locally
+
+### Backend
+
+```bash
+cd backend
+npm install
+npm run start:dev
+```
+
+API:
+`http://localhost:4000/api`
+
 ### Frontend
-https://able-space-task-management.vercel.app/login
 
-### Backend API
-https://ablespace-backend-8vnt.onrender.com
+Open a second terminal:
 
-## GitHub Repository
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-https://github.com/BhanuStackDev/AbleSpace-Task-Management
+App:
+`http://localhost:3000`
+
+Optional frontend environment variable:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:4000/api
+```
+
+For the deployed frontend, set `NEXT_PUBLIC_API_URL` to:
+
+```text
+https://ablespace-backend-8vnt.onrender.com/api
+```
+
+## Architecture
+
+The frontend uses the Next.js App Router and reusable components for the sidebar, header, task board and task modals.
+
+The backend exposes a small REST API through NestJS. DTO validation is enabled globally with `ValidationPipe`, while TypeORM manages SQLite persistence.
+
+The frontend first attempts to use persisted task data and falls back to local storage when the API is unavailable. This keeps the assessment demo usable during temporary backend cold starts.
+
+## Design fidelity and intentional deviations
+
+The task workspace follows the supplied Figma direction: a light workspace shell, left navigation, grouped task sections, table-style task rows, priority/member/due-date columns and row actions.
+
+Intentional implementation choices:
+
+- Guest authentication is used because the assessment requires a Guest Login flow and no production authentication service was required.
+- Member avatars use a guest/demo representation rather than real user accounts.
+- The mobile layout uses horizontal table scrolling where necessary to preserve the information hierarchy of the desktop design.
+- The Fields control is presented as a UI affordance for the assessment design; the core task workflow remains fully functional without custom field configuration.
+
+## Part 2 - Product Understanding
+
+A separate walkthrough document is included for the AbleSpace Caseload -> Take Data workflow. It explains the visible workflow from the supplied assessment reference and documents UX/UI and functionality improvements.
+
+Recommended submission file:
+
+`docs/AbleSpace-Part2-Take-Data-Walkthrough.pdf`
+
+## Deployment
+
+The frontend is deployed on Vercel and the backend is deployed on Render.
+
+Both services should remain publicly accessible for the required post-submission period.
 
 ## Author
 
