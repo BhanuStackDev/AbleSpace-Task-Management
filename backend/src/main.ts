@@ -1,10 +1,15 @@
 import { ValidationPipe } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
+import { RequestMethod } from "@nestjs/common";
 import { AppModule } from "./app.module";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.setGlobalPrefix("api");
+
+  app.setGlobalPrefix("api", {
+    exclude: [{ path: "/", method: RequestMethod.GET }],
+  });
+
   app.enableCors({ origin: true, credentials: true });
   app.useGlobalPipes(
     new ValidationPipe({
@@ -13,7 +18,9 @@ async function bootstrap() {
       transform: true,
     }),
   );
-  await app.listen(process.env.PORT ? Number(process.env.PORT) : 4000);
+
+  const port = Number(process.env.PORT) || 4000;
+  await app.listen(port, "0.0.0.0");
 }
 
 bootstrap();
