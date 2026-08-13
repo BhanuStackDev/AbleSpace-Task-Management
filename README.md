@@ -34,6 +34,13 @@ A responsive full-stack task management application built for the AbleSpace Full
 - SQLite persistence through TypeORM
 - Local storage fallback when the API is temporarily unavailable
 
+### Backend health
+
+The Render backend root URL returns a small health response, while task APIs are under `/api`.
+
+- Health: `https://ablespace-backend-8vnt.onrender.com/`
+- Tasks: `https://ablespace-backend-8vnt.onrender.com/api/tasks`
+
 ### API endpoints
 
 | Method | Endpoint | Description |

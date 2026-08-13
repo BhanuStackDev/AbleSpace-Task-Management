@@ -4,7 +4,8 @@
 
 - GitHub: https://github.com/BhanuStackDev/AbleSpace-Task-Management
 - Frontend: https://able-space-task-management.vercel.app/login
-- Backend: https://ablespace-backend-8vnt.onrender.com
+- Backend health: https://ablespace-backend-8vnt.onrender.com/
+- Backend API: https://ablespace-backend-8vnt.onrender.com/api/tasks
 
 ## Part 2
 
