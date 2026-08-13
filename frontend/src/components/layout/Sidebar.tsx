@@ -11,6 +11,7 @@ type MenuItem = {
 const menuItems: MenuItem[] = [
   { label: "Tasks", icon: "▤", path: "/" },
   { label: "Projects", icon: "□", path: "/dashboard" },
+  { label: "Calendar", icon: "▦", path: "/calendar" },
 ];
 
 export default function Sidebar() {
