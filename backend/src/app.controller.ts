@@ -10,4 +10,11 @@ export class AppController {
       api: "/api/tasks",
     };
   }
+
+  @Get("health")
+  getHealth() {
+    return {
+      status: "ok",
+    };
+  }
 }
