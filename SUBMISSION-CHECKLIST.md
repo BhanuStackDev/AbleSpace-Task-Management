@@ -4,15 +4,16 @@
 
 - GitHub: https://github.com/BhanuStackDev/AbleSpace-Task-Management
 - Frontend: https://able-space-task-management.vercel.app/login
-- Backend health: https://ablespace-backend-8vnt.onrender.com/
-- Backend API: https://ablespace-backend-8vnt.onrender.com/api/tasks
+- Backend health: https://ablespace-backend-7gu3.onrender.com/api/health
+- Backend API: https://ablespace-backend-7gu3.onrender.com
+- Backend tasks: https://ablespace-backend-7gu3.onrender.com/api/tasks
 
 ## Part 2
 
 Upload `docs/AbleSpace-Part2-Take-Data-Walkthrough.pdf` to Google Drive and set:
 Anyone with the link -> Viewer
 
-Paste that Drive link into the AbleSpace Walkthrough field in the Google Form.
+
 
 ## Before submitting
 

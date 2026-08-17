@@ -5,7 +5,7 @@ A responsive full-stack task management application built for the AbleSpace Full
 ## Live Demo
 
 - Frontend: https://able-space-task-management.vercel.app/login
-- Backend API: https://ablespace-backend-8vnt.onrender.com
+- Backend API: https://ablespace-backend-7gu3.onrender.com
 - GitHub: https://github.com/BhanuStackDev/AbleSpace-Task-Management
 
 ## Tech Stack
@@ -38,8 +38,8 @@ A responsive full-stack task management application built for the AbleSpace Full
 
 The Render backend root URL returns a small health response, while task APIs are under `/api`.
 
-- Health: `https://ablespace-backend-8vnt.onrender.com/`
-- Tasks: `https://ablespace-backend-8vnt.onrender.com/api/tasks`
+- Health: `https://ablespace-backend-7gu3.onrender.com/api/health`
+- Tasks: `https://ablespace-backend-7gu3.onrender.com/api/tasks`
 
 ### API endpoints
 
@@ -50,30 +50,17 @@ The Render backend root URL returns a small health response, while task APIs are
 | PATCH | `/api/tasks/:id` | Update a task |
 | DELETE | `/api/tasks/:id` | Delete a task |
 
-## Project structure
 
-```text
-AbleSpace-Assessment/
-├── frontend/
-│   ├── src/app/
-│   ├── src/components/
-│   ├── src/lib/
-│   └── src/types/
-├── backend/
-│   └── src/
-├── README.md
-└── package.json
-```
 
 ## Run locally
 
 ### Backend
 
-```bash
+
 cd backend
 npm install
 npm run start:dev
-```
+
 
 API:
 `http://localhost:4000/api`
@@ -82,26 +69,25 @@ API:
 
 Open a second terminal:
 
-```bash
+
 cd frontend
 npm install
 npm run dev
-```
+
 
 App:
 `http://localhost:3000`
 
 Optional frontend environment variable:
 
-```env
+
 NEXT_PUBLIC_API_URL=http://localhost:4000/api
-```
+
 
 For the deployed frontend, set `NEXT_PUBLIC_API_URL` to:
 
-```text
-https://ablespace-backend-8vnt.onrender.com/api
-```
+
+https://ablespace-backend-7gu3.onrender.com
 
 ## Architecture
 
